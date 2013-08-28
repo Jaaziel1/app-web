@@ -156,6 +156,10 @@ public class ComponentesBean {
 		}
 	}
 	public void excluir(Pessoa pessoa){
+		if (this.filtro != null && this.filtro.length() > 0) 
+			this.filtrados.remove(pessoa);
+		else
+			this.lista.remove(pessoa);
 		Session session = FabricaSessao.abrirSessao();
 		Transaction t = session.beginTransaction();
 				session.delete(pessoa);
